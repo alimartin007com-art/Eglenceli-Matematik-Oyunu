@@ -31,7 +31,6 @@ export const levelUpCoinReward = document.getElementById("levelUpCoinReward");
 export const levelUpHintReward = document.getElementById("levelUpHintReward");
 export const themeSelector = document.getElementById("themeSelector");
 export const inputNumeric = document.getElementById("input-numeric");
-export const virtualNumpad = document.getElementById("virtual-numpad");
 export const xpBar = document.getElementById("xpBar");
 export const xpText = document.getElementById("xpText");
 export const gameTimerPill = document.getElementById("game-timer-pill");
@@ -163,7 +162,6 @@ export function updateMeta(saveProfileFn) {
     gameTimerPill.style.display = State.gameState.running && (State.isBlitzMode || State.isSurvivalMode) ? 'flex' : 'none';
 
     inputNumeric.classList.toggle('hidden', !State.gameState.running);
-    virtualNumpad.classList.toggle('hidden', !State.gameState.running);
 
     answerInput.disabled = !State.gameState.running;
     submitBtn.disabled = !State.gameState.running;

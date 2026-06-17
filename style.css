@@ -835,43 +835,20 @@ html[data-theme='retro'] .modal-content {
 }
 #levelUpCloseBtn:hover {
     transform: scale(1.05);
-}
-
-/* YENİ: Sanal Numpad */
-.virtual-numpad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 15px;
-    width: 100%;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.virtual-numpad.hidden {
+/* YENİ: Mobil Eksi/Artı Butonu */
+.mobile-only-btn {
     display: none;
-}
-.numpad-btn {
     background: var(--pill-bg);
-    color: var(--text);
+    color: var(--accent);
     border: 2px solid var(--border);
-    padding: 12px;
+    padding: 10px 15px;
+    border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
-    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.1s;
-    user-select: none;
 }
-.numpad-btn:active {
-    transform: scale(0.95);
-    background: var(--accent);
-    color: white;
-}
-.numpad-del {
-    background: var(--bad);
-    color: white;
-    border-color: var(--bad);
+.mobile-only-btn:active {
+    background: var(--border);
 }
 
 /* YENİ: Seri (Streak) Animasyonu */
@@ -895,10 +872,33 @@ html[data-theme='retro'] .modal-content {
     font-size: 2em;
   }
   
-  /* YENİ v3.0: Mobil için giriş konteyneri */
+  .mobile-only-btn {
+      display: inline-block;
+  }
+  
   .input-numeric-container {
-      flex-direction: column;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       width: 100%;
+      gap: 10px;
+  }
+  
+  .input-numeric-container input {
+      flex: 1;
+      font-size: 18px; /* Mobilde zoom yapmayı engeller ve rahat görünür */
+      padding: 12px;
+  }
+  
+  #submit {
+      width: 100%;
+      font-size: 18px;
+      padding: 15px;
+  }
+  
+  #skip {
+      width: 100%;
+      padding: 12px;
   }
   
   /* YENİ v3.0: Mobil için header butonlarını sığdır */

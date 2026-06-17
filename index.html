@@ -291,26 +291,11 @@
 
       <div class="input-row" style="margin-top: 15px;">
         <div id="input-numeric" class="input-numeric-container">
-            <input type="number" id="answer" step="1" placeholder="Cevabını yaz" />
+            <button id="mobile-minus-btn" class="mobile-only-btn" tabindex="-1" title="Eksi İşareti Ekle/Kaldır">±</button>
+            <input type="number" inputmode="numeric" id="answer" step="1" placeholder="Cevap" />
             <button id="submit">Kontrol Et (Enter)</button>
             <button id="skip" class="secondary">Pas</button>
         </div>
-      </div>
-
-      <!-- Sanal Numpad -->
-      <div id="virtual-numpad" class="virtual-numpad hidden">
-        <button class="numpad-btn" data-val="1">1</button>
-        <button class="numpad-btn" data-val="2">2</button>
-        <button class="numpad-btn" data-val="3">3</button>
-        <button class="numpad-btn" data-val="4">4</button>
-        <button class="numpad-btn" data-val="5">5</button>
-        <button class="numpad-btn" data-val="6">6</button>
-        <button class="numpad-btn" data-val="7">7</button>
-        <button class="numpad-btn" data-val="8">8</button>
-        <button class="numpad-btn" data-val="9">9</button>
-        <button class="numpad-btn" data-val="-">-</button>
-        <button class="numpad-btn" data-val="0">0</button>
-        <button class="numpad-btn numpad-del" id="numpad-del">Sil</button>
       </div>
 
       <div class="result" id="result"></div>
