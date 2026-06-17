@@ -297,6 +297,22 @@
         </div>
       </div>
 
+      <!-- Sanal Numpad -->
+      <div id="virtual-numpad" class="virtual-numpad hidden">
+        <button class="numpad-btn" data-val="1">1</button>
+        <button class="numpad-btn" data-val="2">2</button>
+        <button class="numpad-btn" data-val="3">3</button>
+        <button class="numpad-btn" data-val="4">4</button>
+        <button class="numpad-btn" data-val="5">5</button>
+        <button class="numpad-btn" data-val="6">6</button>
+        <button class="numpad-btn" data-val="7">7</button>
+        <button class="numpad-btn" data-val="8">8</button>
+        <button class="numpad-btn" data-val="9">9</button>
+        <button class="numpad-btn" data-val="-">-</button>
+        <button class="numpad-btn" data-val="0">0</button>
+        <button class="numpad-btn numpad-del" id="numpad-del">Sil</button>
+      </div>
+
       <div class="result" id="result"></div>
 
       <div id="shop" class="card hidden">
@@ -412,12 +428,6 @@
         <button onclick="document.getElementById('authModal').classList.add('hidden')" style="margin-top: 10px; width: 100%; background: var(--bad); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold;">İptal</button>
     </div>
 </div>
-
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <!-- Ayrı JavaScript dosyası Modüler -->
 <script type="module" src="js/main.js"></script>

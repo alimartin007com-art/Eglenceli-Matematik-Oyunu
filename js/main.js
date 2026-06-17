@@ -162,6 +162,23 @@ document.addEventListener('DOMContentLoaded', () => {
     UI.hintBtn.addEventListener('click', Game.useHint);
     UI.startBtn.addEventListener('click', Game.startGame);
     
+    // Sanal Klavye Dinleyicileri
+    document.querySelectorAll('.numpad-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (!State.gameState.running) return;
+            if (e.target.id === 'numpad-del') {
+                UI.answerInput.value = UI.answerInput.value.slice(0, -1);
+            } else {
+                const val = e.target.getAttribute('data-val');
+                if (val !== null) {
+                    UI.answerInput.value += val;
+                }
+            }
+            UI.answerInput.focus();
+        });
+    });
+
+    
     UI.soundToggleBtn.addEventListener('click', () => {
         State.setIsSoundEnabled(!State.isSoundEnabled);
         UI.soundToggleBtn.textContent = State.isSoundEnabled ? "🔊 Ses Açık" : "🔇 Ses Kapalı";

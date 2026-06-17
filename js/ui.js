@@ -31,6 +31,7 @@ export const levelUpCoinReward = document.getElementById("levelUpCoinReward");
 export const levelUpHintReward = document.getElementById("levelUpHintReward");
 export const themeSelector = document.getElementById("themeSelector");
 export const inputNumeric = document.getElementById("input-numeric");
+export const virtualNumpad = document.getElementById("virtual-numpad");
 export const xpBar = document.getElementById("xpBar");
 export const xpText = document.getElementById("xpText");
 export const gameTimerPill = document.getElementById("game-timer-pill");
@@ -139,7 +140,17 @@ export function updateMeta(saveProfileFn) {
     scoreEl.textContent = State.gameState.score;
     correctEl.textContent = State.gameState.correct;
     wrongEl.textContent = State.gameState.wrong;
-    streakEl.textContent = State.streak;
+
+    // Streak değiştiğinde animasyon ekle
+    if (streakEl.textContent !== State.streak.toString()) {
+        streakEl.textContent = State.streak;
+        if (State.streak > 0) {
+            streakEl.parentElement.classList.remove('streak-anim');
+            void streakEl.parentElement.offsetWidth; // trigger reflow
+            streakEl.parentElement.classList.add('streak-anim');
+        }
+    }
+
     shieldsEl.textContent = State.streakShields;
     skipsEl.textContent = State.skipTokens;
 
@@ -152,6 +163,7 @@ export function updateMeta(saveProfileFn) {
     gameTimerPill.style.display = State.gameState.running && (State.isBlitzMode || State.isSurvivalMode) ? 'flex' : 'none';
 
     inputNumeric.classList.toggle('hidden', !State.gameState.running);
+    virtualNumpad.classList.toggle('hidden', !State.gameState.running);
 
     answerInput.disabled = !State.gameState.running;
     submitBtn.disabled = !State.gameState.running;
