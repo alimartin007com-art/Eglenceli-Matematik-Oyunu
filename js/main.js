@@ -244,4 +244,13 @@ document.addEventListener('DOMContentLoaded', () => {
     UI.setTheme(savedTheme);
 
     UI.showPage('home', Game.endGame);
+
+    // Service Worker Kaydı (PWA için)
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker kayıt edildi.', reg))
+                .catch(err => console.log('Service Worker kayıt hatası:', err));
+        });
+    }
 });
