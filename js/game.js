@@ -233,6 +233,14 @@ export function nextQuestion() {
     UI.answerInput.value = ""; 
     UI.resultEl.textContent = ""; 
     
+    if (prob.type === 'algebra') {
+        UI.answerInput.type = 'text';
+        UI.answerInput.setAttribute('inputmode', 'text');
+    } else {
+        UI.answerInput.type = 'number';
+        UI.answerInput.setAttribute('inputmode', 'numeric');
+    }
+    
     UI.answerInput.focus();
     
     startTimer();
@@ -243,12 +251,26 @@ export function checkAnswer() {
     if (!State.gameState.running || State.currentProblem === null) return;
     
     const correctAnswer = State.currentProblem.ans;
-    let userAnswer = Number(UI.answerInput.value);
-    if (UI.answerInput.value.trim() === "") return; 
+    let rawVal = UI.answerInput.value.trim().toLowerCase();
+    if (rawVal === "") return; 
 
     clearInterval(State.timer);
     
-    if (userAnswer === correctAnswer) { 
+    let isCorrect = false;
+    if (State.currentProblem.type === 'algebra') {
+        let strippedVal = rawVal.replace('x', '');
+        if (strippedVal === "" && rawVal.includes('x')) strippedVal = "1";
+        if (strippedVal === "-" && rawVal.includes('x')) strippedVal = "-1";
+        if (Number(strippedVal) === correctAnswer && !isNaN(Number(strippedVal))) {
+            isCorrect = true;
+        }
+    } else {
+        if (Number(rawVal) === correctAnswer && rawVal !== "") {
+            isCorrect = true;
+        }
+    }
+    
+    if (isCorrect) { 
         handleCorrectAnswer(); 
     } else { 
         handleWrongAnswer(correctAnswer); 
