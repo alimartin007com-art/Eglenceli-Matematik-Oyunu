@@ -40,9 +40,9 @@ export function applyProfileData(p) {
     if (p.level !== undefined) State.setLevel(p.level);
     if (p.streakShields !== undefined) State.setStreakShields(p.streakShields);
     if (p.ownedThemes) {
-        // Eski profildeki temaları mevcut varsayılan temalarla birleştir (kayıp tema olmaması için)
-        const merged = [...new Set([...State.ownedThemes, ...p.ownedThemes])];
-        State.setOwnedThemes(merged);
+        let validThemes = ['light', 'dark'];
+        if (p.ownedThemes.includes('gold')) validThemes.push('gold');
+        State.setOwnedThemes(validThemes);
     }
     if (p.badges) {
         for (const key in p.badges) {
