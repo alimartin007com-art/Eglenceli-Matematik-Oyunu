@@ -12,7 +12,8 @@
   --good: #1aa57a;
   --bad: #ff4d4d;
   --header: #ff9800;
-  --gradient: linear-gradient(120deg, #007bff, #8a2be2);
+  --gradient: #ffffff;
+  --header-text: #222;
   --shadow: rgba(18, 43, 90, 0.08);
   --input-bg: #ffffff;
 }
@@ -233,7 +234,7 @@ html[data-theme='matrix'] body {
 
 header{
   background: var(--gradient);
-  color:white;
+  color: var(--header-text, white);
   padding:16px 24px;
   display:flex;
   justify-content:space-between;
@@ -247,7 +248,7 @@ header{
 header h1{margin:0;font-size:26px;text-shadow:0 2px 4px rgba(0,0,0,0.15);}
 nav{display:flex;gap:10px;flex-wrap:wrap; align-items: center;}
 nav button, #themeSelector {
-  background:white;color:var(--header);border:none;
+  background:var(--pill-bg);color:var(--header);border:1px solid var(--border);
   padding:8px 14px;border-radius:10px;font-weight:600;cursor:pointer;
   box-shadow:0 2px 4px rgba(0,0,0,0.1);
   height: 38px;

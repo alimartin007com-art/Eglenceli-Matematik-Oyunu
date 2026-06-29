@@ -38,7 +38,7 @@ export let streakShields = 0;
 export let customUsername = "";
 
 // Tüm temalar ücretsiz
-export let ownedThemes = ['light', 'dark', 'matrix', 'retro', 'gold', 'arctic', 'cyberpunk', 'sakura', 'summer'];
+export let ownedThemes = ['light', 'dark'];
 
 export let gameState = {
     running: false,

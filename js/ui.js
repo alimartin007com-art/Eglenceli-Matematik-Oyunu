@@ -274,10 +274,29 @@ export function updateThemeShopUI() {
         if (btn) {
             if (State.ownedThemes.includes(theme.key)) {
                 btn.disabled = true;
-                btn.textContent = "Satın Alındı";
+                btn.textContent = "Kullanımda";
+                btn.style.backgroundColor = "var(--good)";
+                btn.style.color = "white";
             } else {
-                btn.disabled = false;
-                btn.textContent = `${theme.cost} 🪙`;
+                if (theme.cost !== undefined) {
+                    btn.disabled = false;
+                    btn.textContent = `${theme.cost} 🪙`;
+                    btn.style.backgroundColor = "var(--accent)";
+                    btn.style.color = "white";
+                } else if (theme.unlockAt !== undefined) {
+                    const totalCorrect = State.gameStats.totalCorrect;
+                    if (totalCorrect >= theme.unlockAt) {
+                        btn.disabled = false;
+                        btn.textContent = "Kilidi Aç";
+                        btn.style.backgroundColor = "var(--accent)";
+                        btn.style.color = "white";
+                    } else {
+                        btn.disabled = true;
+                        btn.textContent = `🔒 ${theme.unlockAt} Doğru`;
+                        btn.style.backgroundColor = "var(--text-light)";
+                        btn.style.color = "white";
+                    }
+                }
             }
         }
     });

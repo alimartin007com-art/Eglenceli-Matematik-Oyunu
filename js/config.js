@@ -27,13 +27,13 @@ export const allThemesMap = {
 
 // Satın alınabilir temalar
 export const purchasableThemes = [
-    { id: 'buy-theme-matrix', key: 'matrix', cost: 150 },
-    { id: 'buy-theme-retro', key: 'retro', cost: 200 },
-    { id: 'buy-theme-gold', key: 'gold', cost: 200 },
-    { id: 'buy-theme-arctic', key: 'arctic', cost: 200 },
-    { id: 'buy-theme-cyberpunk', key: 'cyberpunk', cost: 250 },
-    { id: 'buy-theme-sakura', key: 'sakura', cost: 300 },
-    { id: 'buy-theme-summer', key: 'summer', cost: 300 }
+    { id: 'buy-theme-matrix', key: 'matrix', unlockAt: 20 },
+    { id: 'buy-theme-retro', key: 'retro', unlockAt: 40 },
+    { id: 'buy-theme-arctic', key: 'arctic', unlockAt: 60 },
+    { id: 'buy-theme-summer', key: 'summer', unlockAt: 80 },
+    { id: 'buy-theme-cyberpunk', key: 'cyberpunk', unlockAt: 200 },
+    { id: 'buy-theme-sakura', key: 'sakura', unlockAt: 200 },
+    { id: 'buy-theme-gold', key: 'gold', cost: 500 }
 ];
 
 // Arka plan sembolleri

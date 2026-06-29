@@ -4,7 +4,7 @@
 import * as State from './state.js';
 import * as MathLogic from './math.js';
 import * as UI from './ui.js';
-import { allThemesMap } from './config.js';
+import { allThemesMap, purchasableThemes } from './config.js';
 
 export function startTimer() { 
     clearInterval(State.timer); 
@@ -537,14 +537,23 @@ export function buyItem(item, cost) {
             UI.notify("Bu temaya zaten sahipsin!", false);
             return;
         }
-        if (State.wallet < cost) {
-            UI.notify("Yetersiz Bakiye!", false);
-            return;
+        
+        const themeObj = purchasableThemes.find(t => t.key === themeName);
+        if (themeObj.cost !== undefined) {
+            if (State.wallet < themeObj.cost) {
+                UI.notify("Yetersiz Bakiye!", false);
+                return;
+            }
+            State.setWallet(State.wallet - themeObj.cost);
+        } else if (themeObj.unlockAt !== undefined) {
+            if (State.gameStats.totalCorrect < themeObj.unlockAt) {
+                UI.notify(`Bu tema için toplam ${themeObj.unlockAt} doğru cevaba ulaşmalısın!`, false);
+                return;
+            }
         }
         
-        State.setWallet(State.wallet - cost);
         State.ownedThemes.push(themeName);
-        UI.notify(`🎨 ${allThemesMap[themeName]} teması satın alındı!`, true);
+        UI.notify(`🎨 ${allThemesMap[themeName]} teması açıldı!`, true);
         if(State.isSoundEnabled) UI.buyThemeSound.play().catch(()=>{});
         
         UI.updateThemeSelectorUI();
